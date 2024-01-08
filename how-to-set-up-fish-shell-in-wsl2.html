@@ -1,0 +1,154 @@
+<h3 id="-let-s-talk-about-why-fish-why-not-use-zsh-">
+  <strong>Let's talk about why fish. Why not use zsh?</strong>
+</h3>
+<ul>
+  <li><p>Smart and user-friendly</p></li>
+  <li>
+    <p>
+      powerful features such as syntax highlighting, autosuggestions, and tab
+      completions that simply work out of the box.
+    </p>
+  </li>
+  <li>
+    <p>No need to learn works without configuration (beginner-friendly).</p>
+  </li>
+  <div class="separator" style="clear: both; text-align: center">
+    <a
+      href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhViAqsWJ32tbQFj75PrCSOpLHm2Ou4p_q5LpDekD8M6h1AbN0tnURpaHlZzVVpWpEZDzaebxZUUEj-DUvlYI0RRB-eHwjS2J1DFpb3HB95RegspO4NbSDxBKfRFR8AXRsWMftvT-L0K4EnzXX3IwCRK25wu2x60wKpCVktROcYW3pXxOih6Xyr_iNKes/s1183/44ef185e-b2f5-487c-a7ab-921381cc49f3.jpg"
+      imageanchor="1"
+      style="margin-left: 1em; margin-right: 1em"
+      ><img
+        alt="commands in fish shell"
+        border="0"
+        data-original-height="741"
+        data-original-width="1183"
+        height="200"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhViAqsWJ32tbQFj75PrCSOpLHm2Ou4p_q5LpDekD8M6h1AbN0tnURpaHlZzVVpWpEZDzaebxZUUEj-DUvlYI0RRB-eHwjS2J1DFpb3HB95RegspO4NbSDxBKfRFR8AXRsWMftvT-L0K4EnzXX3IwCRK25wu2x60wKpCVktROcYW3pXxOih6Xyr_iNKes/s320/44ef185e-b2f5-487c-a7ab-921381cc49f3.jpg"
+        width="320"
+    /></a>
+  </div>
+</ul>
+<p>First, we need to install fish using the command:</p>
+<p></p>
+<pre><code class="lang-bash"><span class="hljs-comment"># This will install fish and its dependencies.</span>
+sudo apt <span class="hljs-keyword">install</span> fish
+</code></pre>
+<p>Now we need to set fish-shell as our default shell.</p>
+
+<p>copy this command at the end of the line.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># This will tell us the path of fish binary</span>
+<span class="hljs-comment"># Copy it in the clipboard</span>
+<span class="hljs-built_in">which</span> fish
+</code></pre>
+<pre><code class="lang-bash"><span class="hljs-comment"># Use command sudo chsh -s &lt;paste path of fish shell&gt; &lt;your username&gt;</span>
+<span class="hljs-comment"># Just like:</span>
+sudo chsh -s <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/fish username</span>
+</code></pre>
+<p>
+  <em><mark>Note: Restart your terminal and see if it works.</mark></em>
+</p>
+<p>
+  <img
+    alt=""
+    src='https://media.giphy.com/media/3o6fJ1BM7R2EBRDnxK/giphy.gif align="center"'
+  />
+</p>
+<p><strong>Now we have fish as our default shell.</strong></p>
+<hr />
+<blockquote>
+  <p>
+    I previously stated that configuration is optional. Nonetheless, I will show
+    you how to configure it so that we have a less-boring shell.
+  </p>
+</blockquote>
+<h3
+  id="how-to-inherit-the-system-wide-environment-variables-on-startup-from-bash-"
+>
+  How to inherit the system-wide environment variables on startup, from
+  <strong><em>bash</em></strong
+  >?
+</h3>
+<p>
+  Using the package <strong><em>bass</em></strong> we can solve just that.
+  First, we need to install a plugin manager in Fish called Fisher from
+  <a href="http://git.io/fisher">git.io/fisher</a>.
+</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># This will install fisher plugin manager for us.</span>
+curl -sL https:<span class="hljs-regexp">//gi</span>t.io<span class="hljs-regexp">/fisher | source &amp;&amp; fisher install jorgebucaran/</span>fisher
+</code></pre>
+<p>After installing we can now:</p>
+<pre><code class="lang-bash"># <span class="hljs-keyword">this</span> will update fisher <span class="hljs-keyword">as</span> well <span class="hljs-keyword">as</span> the plugins installed.
+fisher update
+</code></pre>
+<p>
+  Next, we will install bass from
+  <a href="https://github.com/edc/bass">https://github.com/edc/bass</a>. To do
+  this we just use Fisher like this:
+</p>
+<pre><code class="lang-bash">fisher <span class="hljs-keyword">install</span> edc/bass
+</code></pre>
+<p>To use bass we can configure fish like so:</p>
+
+<p>🖊️ Copy the command in <code>.config/fish/config.fish</code></p>
+<pre><code class="lang-bash"># Inherit <span class="hljs-keyword">system</span>-wide environment <span class="hljs-keyword">variables</span>.
+bass <span class="hljs-comment">source</span> /etc/<span class="hljs-comment">profile</span>
+</code></pre>
+<p>That completes the configuration.</p>
+<p><em>Other notable plugins we can use:</em></p>
+<pre><code class="lang-bash"><span class="hljs-comment"># Autopair brackets &amp; qoutes. </span>
+fisher <span class="hljs-keyword">install</span> jorgebucaran/autopair.fish
+</code></pre>
+<pre><code class="lang-bash"><span class="hljs-comment"># Jump to folder easily.</span>
+fisher <span class="hljs-keyword">install</span> jethrokuan/z
+</code></pre>
+
+<hr />
+<h3 id="how-to-style-fish-using-the-starship-cross-shell-prompt-">
+  How to style fish using the starship cross-shell prompt?
+</h3>
+<p>Finally, we have come to the last part of this tutorial.</p>
+<blockquote>
+  <p>
+    Have you noticed how attractive my shell is in comparison to yours? That's
+    because I'm using a Starship preset. This will be quick, so follow me again.
+  </p>
+</blockquote>
+<p>To install it we use:</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># This will install the latest package in your local bin directory. </span>
+curl -sS https:<span class="hljs-regexp">//</span>starship.rs<span class="hljs-regexp">/install.sh | sh -s -- --bin-dir ~/</span>.local<span class="hljs-regexp">/bin/</span>
+</code></pre>
+<p>Next, we need to initialize it using our shell.</p>
+
+<pre><code class="lang-bash"><span class="hljs-comment"># Add this to your fish config.</span>
+starship init fish | <span class="hljs-built_in">source</span>
+</code></pre>
+<p>
+  Setting up the preset from
+  <a href="https://starship.rs/presets/pastel-powerline.html">starship.rs</a>
+</p>
+<pre><code class="lang-bash"># Copy this <span class="hljs-keyword">command</span> <span class="hljs-built_in">and</span> we are good <span class="hljs-keyword">to</span> <span class="hljs-keyword">go</span>.
+starship preset pastel-powerline &gt; ~/.config/starship.toml
+</code></pre>
+<ul>
+  <li>Additional plugin for fisher</li>
+</ul>
+<pre><code class="lang-bash">fisher <span class="hljs-keyword">install</span> jorgebucaran/nvm.fish
+</code></pre>
+<p>👏 Excellent job!</p>
+<p>
+  <strong
+    ><em
+      ><mark
+        >Note: Restart your terminal to make sure all changes take effect.</mark
+      ></em
+    ></strong
+  >
+</p>
+<p>
+  <img
+    alt=""
+    src='https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif align="center"'
+  />
+</p>
+<p>Don't forget to follow 🌏 my socials and subscribe to my 💌 newsletter.</p>
+<br />

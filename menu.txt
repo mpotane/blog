@@ -1,0 +1,1 @@
+{getPosts} $label={Laptops/Gadgets/Reviews/Mobile/Consoles} $type={tabs}
