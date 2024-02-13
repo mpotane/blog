@@ -969,7 +969,7 @@ ul.author-links{display:flex;flex-wrap:wrap;padding:0}
 .comments .comment-header .user a{color:var(--title-color)}
 .comments .comment-header .user a:hover{color:var(--title-hover-color)}
 .comments .comment-header .icon.user{display:none}
-.comments .comment-header .icon.blog-author{display:inline-block;font-size:14px;color:var(--main-color);vertical-align:top;margin:-5px 0 0 4px}
+.comments .comment-header .icon.blog-author{display:inline-block;font-size:14px;color:var(--main-color);margin:-5px 0 0 4px}
 .rtl .comments .comment-header .icon.blog-author{margin:-5px 4px 0 0}
 .comments .comment-header .icon.blog-author:before{content:'\ef76';font-family:'Material Icons Round';font-weight:400}
 .comments .comment-header .datetime{display:block;font-size:12px;font-weight:var(--light-weight);margin:1px 0 0}
